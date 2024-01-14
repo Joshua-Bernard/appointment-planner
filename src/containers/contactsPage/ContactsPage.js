@@ -62,8 +62,11 @@ export const ContactsPage = (props) => {
         <h2>Add Contact</h2>
         <ContactForm
           name={name}
+          setName={setName}
           phone={phone}
+          setPhone={setPhone}
           email={email}
+          setEmail={setEmail}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           duplicate={duplicate}
@@ -72,7 +75,7 @@ export const ContactsPage = (props) => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList objArray={props.contacts} />
+        <TileList tiles={props.contacts} />
       </section>
     </div>
   );
