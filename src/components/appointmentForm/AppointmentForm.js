@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ContactPicker } from "../contactPicker/ContactPicker";
 
 const getTodayString = () => {
@@ -18,6 +18,9 @@ export const AppointmentForm = ({
   setTime,
   handleSubmit,
 }) => {
+  const contactNames = useMemo(() => {
+    return contacts.map((contact) => contact.name);
+  }, [contacts]);
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -44,7 +47,12 @@ export const AppointmentForm = ({
           onChange={(e) => setTime(e.target.value)}
           required
         />
-        <ContactPicker contacts={contacts} />
+        <ContactPicker
+          name="contact"
+          value={contact}
+          contacts={contactNames}
+          onChange={(e) => setContact(e.target.value)}
+        />
         <input type="submit" value="Add Appointment" />
       </form>
     </>
